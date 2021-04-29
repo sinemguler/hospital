@@ -10,17 +10,24 @@
         <h:form>
             <div class="form-group">
                 <label>İSİM</label>
-                <h:inputText styleClass="form-control" value="#{doktorController.entity.isim}" />
+                <h:inputText styleClass="form-control" value="#{hastaController.entity.isim}" />
             </div>
             <div class="form-group">
                 <label>TC</label>
-                <h:inputText  styleClass="form-control"  value="#{doktorController.entity.tc}" />
+                <h:inputText  styleClass="form-control"  value="#{hastaController.entity.tc}" />
             </div>
             <div class="form-group">
                 <label>TELEFON NUMARASI</label>
-                <h:inputText  styleClass="form-control"  value="#{doktorController.entity.tel_numarasi}" />
+                <h:inputText  styleClass="form-control"  value="#{hastaController.entity.tel_numarasi}" />
             </div>
-            <h:commandButton styleClass="btn btn btn-outline-danger" value="Update" action="#{doktorController.update()}"/>  
-            </h:form>
+
+            <div class="form-group">
+                <label>DOGUM TARİHİ</label>
+                <h:inputText  styleClass="form-control"  value="#{hastaController.entity.dog_tarihi}" />
+            </div>
+
+            <h:commandButton styleClass="btn btn btn-outline-danger" value="Update" action="#{hastaController.update()}"/>  
+        </h:form>
     </h:body>
 </html>
+

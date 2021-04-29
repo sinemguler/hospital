@@ -6,25 +6,30 @@
         <title>Facelet Title</title>
         <h:outputStylesheet library="css" name="bootstrap.css"/>
     </h:head>
-    <h:body>
+     <h:body>
        <div class="container">
             <h:form>
                 Silmek istediğinizden emin misiniz? 
                 <div class="form-group">
                 <label>İSİM</label>
-                <h:inputText styleClass="form-control" value="#{doktorController.entity.isim}" />
+                <h:inputText styleClass="form-control" value="#{hastaController.entity.isim}" />
             </div>
             <div class="form-group">
                 <label>TC</label>
-                <h:inputText  styleClass="form-control"  value="#{doktorController.entity.tc}" />
+                <h:inputText  styleClass="form-control"  value="#{hastaController.entity.tc}" />
             </div>
             <div class="form-group">
                 <label>TELEFON NUMARASI</label>
-                <h:inputText  styleClass="form-control"  value="#{doktorController.entity.tel_numarasi}" />
+                <h:inputText  styleClass="form-control"  value="#{hastaController.entity.tel_numarasi}" />
+            </div>
+                
+                 <div class="form-group">
+                <label>DOGUM TARİHİ</label>
+                <h:inputText  styleClass="form-control"  value="#{hastaController.entity.dog_tarihi}" />
             </div>
 
                 <h:commandButton styleClass="btn btn-outline-primary" action="index" value="VAZGEÇ" />
-                <h:commandButton styleClass="btn btn-outline-danger" action="#{doktorController.delete()}" value="SİL" />
+                <h:commandButton styleClass="btn btn-outline-danger" action="#{hastaController.delete(d)}" value="SİL" />
             </h:form>
         </div>
 

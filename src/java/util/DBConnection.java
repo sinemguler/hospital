@@ -17,8 +17,9 @@ public abstract class DBConnection {
     
     public Connection connect(){
          try {
-            Class.forName("com.mysql.jdbc.Driver");
-            this.connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/hospital?user=root&password=1905");
+            Class.forName("org.postgresql.Driver");
+            this.connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/Hospital", "postgres", "1999");
+            
         } catch (Exception e) {
             System.out.println(e.getMessage());
 

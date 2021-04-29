@@ -33,7 +33,7 @@ public class DoktorDAO extends DBConnection {
          List<Doktor> list = new ArrayList<>();
         try {
             Statement st = this.connect().createStatement();
-            ResultSet rs = st.executeQuery("select * from doktor order by doktor_id asc ");//doktorid göre artan sıralama
+            ResultSet rs = st.executeQuery("select * from doktor order by doktor_id asc");//doktorid göre artan sıralama 
 
             while(rs.next ()){
             Doktor tmp = new Doktor(rs.getInt("doktor_id"), rs.getString("isim"), rs.getString("tc"), rs.getString("tel_numarasi"));
@@ -69,31 +69,7 @@ public class DoktorDAO extends DBConnection {
     }
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+   
     
     
     

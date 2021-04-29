@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+        <h:outputStylesheet library="css" name="bootstrap.css"/>
+    </h:head>
+    <h:body>
+       <h:form>
+
+            <h:commandButton styleClass="btn btn-primary" value="YENİ HASTA OLUŞTUR" action="/module/hasta/create"/>
+
+            <h:dataTable styleClass="table table-hover" value="#{hastaController.read}" var="h">
+
+                <h:column>
+                    <f:facet name="header">ID</f:facet>
+                        #{h.hasta_id}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">ISIM</f:facet>
+                        #{h.isim}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">TC</f:facet>
+                        #{h.tc}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">TELEFON NUMARASI</f:facet>
+                        #{h.tel_numarasi}
+                </h:column>
+                
+                 <h:column>
+                    <f:facet name="header">DOĞUM TARİHİ</f:facet>
+                        #{h.dog_tarihi}
+                </h:column>
+
+
+                 <h:column>
+                            <f:facet name="header">SEÇENEKLER</f:facet>
+                            <h:commandButton styleClass="btn btn-outline-success"   value="Update" action="#{hastaController.updateForm(h)}"/> 
+                            <h:commandButton styleClass="btn btn-outline-danger" value="Delete" action="#{hastaController.deleteConfirm(h)}"/> 
+                        </h:column>
+            </h:dataTable>
+        </h:form>
+           
+    </h:body>
+</html>
+

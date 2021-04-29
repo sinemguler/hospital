@@ -16,40 +16,45 @@ import javax.inject.Named;
  *
  * @author Sinem
  */
-
 @Named
 @SessionScoped
 public class DoktorController implements Serializable {
-    
+
     private DoktorDAO doktordao;
     private Doktor entity;
 
-    public List<Doktor> getRead(){
-        return this.getDao().read();  
-    }
-    
-    public String create(){
+    public String create() {
         this.getDao().create(entity);
-        return "/doktor/create";
+        this.entity = new Doktor();
+        return "/module/doktor/index";
     }
-    
-    public void delete(Doktor d){
-        this.getDao().delete(d);
-        
+
+    public List<Doktor> getRead() {
+        return this.getDao().read();
     }
-    
-    public String updateForm(Doktor d){
+
+    public String updateForm(Doktor d) {
         this.entity = d;
-        return "/doktor/update";
+        return "/module/doktor/update";
     }
-    
-    public String update(){
+
+    public String update() {
         this.getDao().update(entity);
-        return "/doktor/index";
+        this.entity = new Doktor();
+        return "/module/doktor/index";
     }
-    
-    
- 
+
+    public String deleteConfirm(Doktor d) {
+        this.entity = d;
+        return "/module/doktor/confirm_delete";
+    }
+
+    public String delete() {
+        this.getDao().delete(entity);
+        this.entity = new Doktor();
+        return "/module/doktor/index";
+    }
+
     public DoktorController() {
     }
 
@@ -57,32 +62,23 @@ public class DoktorController implements Serializable {
         if (this.doktordao == null) {
             this.doktordao = new DoktorDAO();
         }
-        
+
         return doktordao;
     }
 
     public void setDao(DoktorDAO dao) {
-        this.doktordao= doktordao;
+        this.doktordao = doktordao;
     }
 
     public Doktor getEntity() {
+        if (this.entity == null) {
+            this.entity = new Doktor();
+        }
         return entity;
     }
 
     public void setEntity(Doktor entity) {
-        if (this.entity == null) {
-            this.entity = new Doktor();
-        }
         this.entity = entity;
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
 }
