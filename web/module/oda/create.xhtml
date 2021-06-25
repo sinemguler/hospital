@@ -18,7 +18,12 @@
                 <label>KAT</label>
                 <h:inputText  styleClass="form-control"  value="#{odaController.entity.kat}" />
             </div>
-            
+            <div class="form-group">
+                <label>HASTA ID</label>
+                <h:selectOneMenu value="#{odaController.selectedHasta}">
+                    <f:selectItems value="#{hastaController.read}" var="h" itemLabel="#{h.isim}" itemValue="#{h.hasta_id}"/>
+                </h:selectOneMenu>
+            </div>
             <h:commandButton styleClass="btn btn btn-outline-info" value="Create" action="#{odaController.create()}"/>  
 
         </h:form>

@@ -6,11 +6,13 @@
 package controller;
 
 import dao.HastaDAO;
+import entity.Doktor;
 import entity.Hasta;
 
 import java.io.Serializable;
 import java.util.List;
 import javax.enterprise.context.SessionScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 /**
@@ -24,7 +26,22 @@ public class HastaController implements Serializable {
     private HastaDAO hastadao;
     private Hasta entity;
 
+    @Inject
+    private DoktorController doktorController;
+
+    private int selectedDoktor;
+
+    public int getSelectedDoktor() {
+        return selectedDoktor;
+    }
+
+    public void setSelectedDoktor(int selectedDoktor) {
+        this.selectedDoktor = selectedDoktor;
+    }
+
     public String create() {
+        Doktor d = doktorController.getDao().getById(selectedDoktor);
+        entity.setDoktor(d);
         this.getDao().create(entity);
         this.entity = new Hasta();
         return "/module/hasta/index";
@@ -35,11 +52,14 @@ public class HastaController implements Serializable {
     }
 
     public String updateForm(Hasta h) {
+        this.selectedDoktor = h.getDoktor().getDoktor_id();
         this.entity = h;
         return "/module/hasta/update";
     }
 
     public String update() {
+        Doktor d = doktorController.getDao().getById(selectedDoktor);
+        entity.setDoktor(d);
         this.getDao().update(entity);
         this.entity = new Hasta();
         return "/module/hasta/index";

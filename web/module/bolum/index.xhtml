@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+        <h:outputStylesheet library="css" name="bootstrap.css"/>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:commandButton styleClass="btn btn-outline-warning" action="/index" value="Anasayfaya Dön"/>
+            <h:commandButton styleClass="btn btn-primary" value="YENİ BÖLÜM OLUŞTUR" action="/module/bolum/create"/>
+
+            <h:dataTable styleClass="table table-hover" value="#{bolumController.read}" var="b">
+
+                <h:column>
+                    <f:facet name="header">ID</f:facet>
+                        #{b.bolum_id}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">BÖLÜM İSMİ</f:facet>
+                        #{b.bolum_ismi}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">SEÇENEKLER</f:facet>
+                    <h:commandButton styleClass="btn btn-outline-success"   value="Update" action="#{bolumController.updateForm(b)}"/> 
+                    <h:commandButton styleClass="btn btn-outline-danger" value="Delete" action="#{bolumController.deleteConfirm(b)}"/> 
+                </h:column>
+            </h:dataTable>
+        </h:form>
+    </h:body>
+</html>
+

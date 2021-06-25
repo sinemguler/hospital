@@ -56,6 +56,36 @@ public class Doktor {
     public void setTel_numarasi(String tel_numarasi) {
         this.tel_numarasi = tel_numarasi;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 29 * hash + this.doktor_id;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Doktor other = (Doktor) obj;
+        if (this.doktor_id != other.doktor_id) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Doktor{" + "doktor_id=" + doktor_id + ", isim=" + isim + ", tc=" + tc + ", tel_numarasi=" + tel_numarasi + '}';
+    }
     
     
     

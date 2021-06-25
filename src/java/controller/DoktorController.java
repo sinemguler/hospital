@@ -29,6 +29,11 @@ public class DoktorController implements Serializable {
         return "/module/doktor/index";
     }
 
+    public Doktor getById(int id){
+        return this.getDao().getById(id);
+    }
+    
+    
     public List<Doktor> getRead() {
         return this.getDao().read();
     }

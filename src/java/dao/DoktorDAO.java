@@ -6,6 +6,7 @@
 package dao;
 
 import entity.Doktor;
+import facade.CreateFacade;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -17,60 +18,55 @@ import util.DBConnection;
  * @author Sinem
  */
 public class DoktorDAO extends DBConnection {
-    
-    public void create(Doktor d){
+
+        CreateFacade Facade = new CreateFacade();
+
+    public Doktor getById(int id) {
+        Doktor d = null;
         try {
             Statement st = this.connect().createStatement();
-            st.executeUpdate("insert into doktor (isim , tc, tel_numarasi) values('" + d.getIsim() + "' , '" + d.getTc() + "', '" + d.getTel_numarasi()+ "' ) ");
+            ResultSet rs = st.executeQuery("select * from doktor where doktor_id=" + id);
 
+            rs.next();
+
+            d = new Doktor(rs.getInt("doktor_id"), rs.getString("isim"), rs.getString("tc"), rs.getString("tel_numarasi"));
         } catch (Exception e) {
-            System.out.println(e.getMessage());
 
         }
+        return d;
     }
-    
-     public List<Doktor> read(){
-         List<Doktor> list = new ArrayList<>();
+
+    public List<Doktor> read() {
+        List<Doktor> list = new ArrayList<>();
         try {
             Statement st = this.connect().createStatement();
             ResultSet rs = st.executeQuery("select * from doktor order by doktor_id asc");//doktorid göre artan sıralama 
 
-            while(rs.next ()){
-            Doktor tmp = new Doktor(rs.getInt("doktor_id"), rs.getString("isim"), rs.getString("tc"), rs.getString("tel_numarasi"));
-            list.add(tmp);
-        }
-            
+            while (rs.next()) {
+                Doktor tmp = new Doktor(rs.getInt("doktor_id"), rs.getString("isim"), rs.getString("tc"), rs.getString("tel_numarasi"));
+                list.add(tmp);
+            }
+
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
         return list;
     }
-     
-      public void update(Doktor d){
-        try {
-            Statement st = this.connect().createStatement();
-            st.executeUpdate("update doktor set isim='" + d.getIsim() + "' , tc='" + d.getTc() + "' , tel_numarasi='" + d.getTel_numarasi() + "' where doktor_id=" + d.getDoktor_id());
 
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-
-        }
+    public void create(Doktor d) {
+        String sorgu = "insert into doktor (isim , tc, tel_numarasi) values('" + d.getIsim() + "' , '" + d.getTc() + "', '" + d.getTel_numarasi() + "' ) ";
+        Facade.executeUpdate(sorgu);
+        read();
     }
-      
-       public void delete(Doktor d){
-        try {
-            Statement st = this.connect().createStatement();
-            st.executeUpdate("delete from doktor where doktor_id="+d.getDoktor_id());
 
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-
-        }
+    public void update(Doktor d) {
+        String Sorgu = "update doktor set isim='" + d.getIsim() + "' , tc='" + d.getTc() + "' , tel_numarasi='" + d.getTel_numarasi() + "' where doktor_id=" + d.getDoktor_id() + "";
+        Facade.executeUpdate(Sorgu);
     }
-    
-    
-   
-    
-    
-    
+
+    public void delete(Doktor d) {
+        String sorgu = "delete from doktor where doktor_id = "+d.getDoktor_id()+"";
+        Facade.executeUpdate(sorgu);
+
+    }
 }

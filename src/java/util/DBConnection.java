@@ -7,6 +7,7 @@ package util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 
 /**
  *
@@ -15,7 +16,8 @@ import java.sql.DriverManager;
 public abstract class DBConnection {
     private Connection connection;
     
-    public Connection connect(){
+    public Connection connect() throws SQLException{
+        if(this.connection == null || this.connection.isClosed())
          try {
             Class.forName("org.postgresql.Driver");
             this.connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/Hospital", "postgres", "1999");

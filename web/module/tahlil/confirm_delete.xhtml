@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+        <h:outputStylesheet library="css" name="bootstrap.css"/>
+    </h:head>
+    <h:body>
+        div class="container">
+            <h:form>
+                Silmek istediğinizden emin misiniz? 
+                <div class="form-group">
+                <label>TIPI</label>
+                <h:inputText styleClass="form-control" value="#{tahlilController.entity.tipi}" />
+            </div>
+                
+                 <div class="form-group">
+                    <label>DOKTOR ID</label>
+                    <h:selectOneMenu value="#{tahlilController.entity.doktor_id}">
+                        <f:selectItems value="#{doktorController.read}" var="d" itemLabel="#{d.isim}" itemValue="#{d.doktor_id}"/>
+                    </h:selectOneMenu>
+                </div>
+
+                
+                 <div class="form-group">
+                    <label>DOKTOR ID</label>
+                    <h:selectOneMenu value="#{tahlilController.entity.hasta_id}">
+                        <f:selectItems value="#{hastaController.read}" var="h" itemLabel="#{h.isim}" itemValue="#{h.hasta_id}"/>
+                    </h:selectOneMenu>
+                </div>
+
+          
+                <h:commandButton styleClass="btn btn-outline-primary" action="index" value="VAZGEÇ" />
+                <h:commandButton styleClass="btn btn-outline-danger" action="#{tahlilController.delete(t)}" value="SİL" />
+            </h:form>
+        </div>
+
+    </h:body>
+</html>
+

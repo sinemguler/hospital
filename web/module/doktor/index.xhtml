@@ -10,7 +10,7 @@
     </h:head>
     <h:body>
         <h:form>
-
+            <h:commandButton styleClass="btn btn-outline-warning" action="/index" value="Anasayfaya Dön"/>
             <h:commandButton styleClass="btn btn-primary" value="YENİ DOKTOR OLUŞTUR" action="/module/doktor/create"/>
 
             <h:dataTable styleClass="table table-hover" value="#{doktorController.read}" var="d">

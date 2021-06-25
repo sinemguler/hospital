@@ -14,19 +14,19 @@ public class Hasta {
     private String isim;
     private String tc;
     private String dog_tarihi;
-    private String tel_numarasi;
-    private int doktor_id;
+    private int tel_numarasi;
+    private Doktor doktor;
 
     public Hasta() {
     }
 
-    public Hasta(int hasta_id, String isim, String tc, String dog_tarihi, String tel_numarasi, int doktor_id) {
+    public Hasta(int hasta_id, String isim, String tc, String dog_tarihi, int tel_numarasi, Doktor doktor) {
         this.hasta_id = hasta_id;
         this.isim = isim;
         this.tc = tc;
         this.dog_tarihi = dog_tarihi;
         this.tel_numarasi = tel_numarasi;
-        this.doktor_id = doktor_id;
+        this.doktor = doktor;
     }
 
     public int getHasta_id() {
@@ -61,21 +61,31 @@ public class Hasta {
         this.dog_tarihi = dog_tarihi;
     }
 
-    public String getTel_numarasi() {
+    public int getTel_numarasi() {
         return tel_numarasi;
     }
 
-    public void setTel_numarasi(String tel_numrasi) {
+    public void setTel_numarasi(int tel_numrasi) {
         this.tel_numarasi = tel_numarasi;
     }
 
-    public int getDoktor_id() {
-        return doktor_id;
+    public Doktor getDoktor() {
+        return doktor;
     }
 
-    public void setDoktor_id(int doktor_id) {
-        this.doktor_id = doktor_id;
+    public void setDoktor(Doktor doktor) {
+        this.doktor = doktor;
     }
+
+    @Override
+    public String toString() {
+        return "Hasta{" + "hasta_id=" + hasta_id + ", isim=" + isim + ", tc=" + tc + ", dog_tarihi=" + dog_tarihi + ", tel_numarasi=" + tel_numarasi + ", doktor=" + doktor + '}';
+    }
+
+   
 
     
 }
+
+    
+

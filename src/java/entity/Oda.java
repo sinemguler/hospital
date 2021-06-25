@@ -10,18 +10,19 @@ package entity;
  * @author Sinem
  */
 public class Oda {
-
     private int oda_id;
     private String kat;
     private int oda_numarasi;
+    private Hasta hasta ;
 
     public Oda() {
     }
 
-    public Oda(int oda_id, String kat, int oda_numarasi) {
+    public Oda(int oda_id, String kat, int oda_numarasi, Hasta hasta) {
         this.oda_id = oda_id;
         this.kat = kat;
         this.oda_numarasi = oda_numarasi;
+        this.hasta = hasta;
     }
 
     public int getOda_id() {
@@ -48,4 +49,20 @@ public class Oda {
         this.oda_numarasi = oda_numarasi;
     }
 
+    public Hasta getHasta() {
+        return hasta;
+    }
+
+    public void setHasta(Hasta hasta) {
+        this.hasta = hasta;
+    }
+
+    @Override
+    public String toString() {
+        return "Oda{" + "oda_id=" + oda_id + ", kat=" + kat + ", oda_numarasi=" + oda_numarasi + ", hasta=" + hasta + '}';
+    }
+    
+    
+   
+    
 }
